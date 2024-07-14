@@ -8,7 +8,8 @@ return {
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "tsserver", "clangd", "cmake", "zls", "gopls", "ols" },
+                ensure_installed = { "lua_ls", "tsserver" },
+                --[[ensure_installed = { "lua_ls", "tsserver", "clangd", "cmake", "zls", "gopls", "ols" },]]
             })
 
             local capabilities = require('cmp_nvim_lsp').default_capabilities();
@@ -20,6 +21,7 @@ return {
             lspconfig.tsserver.setup({
                 capabilities = capabilities
             })
+--[[
             lspconfig.clangd.setup({
                 cmd = { "clangd", "--compile-commands-dir=build/debug" },
                 capabilities = capabilities
@@ -34,6 +36,10 @@ return {
                 capabilities = capabilities
             })
             lspconfig.ols.setup({
+                capabilities = capabilities
+            })
+]]
+            lspconfig.astro.setup({
                 capabilities = capabilities
             })
 
